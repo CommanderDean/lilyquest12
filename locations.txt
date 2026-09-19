@@ -1,135 +1,167 @@
-Locations for Lincoln's Quest (9th Birthday, 2026)
+Locations & Audio Scripts for Lily's Quest (12th Birthday, 2026)
+==================================================================
+
+BALLOON METHOD: codes are hidden inside/on balloons this year — some fully
+inflated, some barely blown up, some not inflated at all. How each one is
+revealed (pop it, it's just deflated, or the code's written on the outside)
+can vary spot by spot — no fixed rule, decide on the day.
+
+Door 2 (the pool) is sorted: balloon tied to a rock via string, dropped in
+the middle. No more waterproofing worries there.
+
+==================================================
+Your 10 Hiding Spots
 ==================================================
 
-Hiding Spots & Audio Scripts
------------------------------
-
-1. Under blue pot plant at top of inside stairs
+1. Behind the standing mirror in the upstairs hallway
    Code: 2468
 
    Clue 1 (Clue1.mp3):
-   "Seek the vessel of deepest blue, standing guard at the summit of the inner steps.
-   Lift it, young seeker, and claim what lies beneath."
+   "Upstairs stands a silver guardian who shows you your own face each day,
+    yet she has never once spoken her own name. Step behind her, young
+    seeker, and see what she has been hiding from you."
 
 
-2. Inside towel cupboard at the bottom of the stairs (where Lincoln likes to hide)
+2. At the bottom of the pool in the backyard
    Code: 7351
 
    Clue 2 (Clue2.mp3):
-   "You know this hiding place well, Lincoln — for you yourself have sheltered here among
-   the towels. Go now to the cupboard at the foot of the stairs. Your next secret awaits within."
+   "In the backyard lies a realm of blue, still and deep, where you cannot
+    breathe but the fish would feel at home. Take a breath, brave seeker,
+    and dive down to where the sunlight fades — your next secret rests
+    upon the floor of the deep."
 
 
-3. Inside a Poké Ball
+3. In the hanging basket on the front porch (empty, hangs from the ceiling)
    Code: 4812
 
    Clue 3 (Clue3.mp3):
-   "The great orb of red and white — a magical sphere said to hold creatures of extraordinary
-   power. Open it... and you shall find your next clue."
+   "At the front of the house hangs a vessel meant for flowers and leaves,
+    yet no green thing grows within it now. Reach up into its emptiness,
+    seeker, and you shall find what waits."
 
 
-4. Lego Ninjago book — on the page about Jungle Kai
+4. In the pocket of her pink puffer jacket, in her room
    Code: 6237
 
    Clue 4 (Clue4.mp3):
-   "Seek out the great tome that names and chronicles the warriors of Ninjago. Turn its pages,
-   young seeker, until you find the jungle warrior — Kai himself. There, your next code lies hidden."
+   "Somewhere in your own chamber rests a coat as pink as dawn, puffed up
+    like a cloud caught mid-fall. Search its pocket, young seeker, and
+    your next secret shall be found."
 
 
-5. On a skateboard
+5. In the esky with the Australian flag design, downstairs outside
    Code: 1584
 
    Clue 5 (Clue5.mp3):
-   "The brave and the bold glide through the streets upon four wheels. Find this trusty board
-   and claim the code that rests upon it."
+   "Outside, below, a box stands guard — one that keeps cold things cold,
+    marked with the stars of our southern sky. Open its lid, seeker, and
+    claim what lies within."
 
 
-6. Inside Spider-Man toothbrush case in the bottom drawer of the upstairs bathroom
+6. In the spider skeleton's rib cage — Halloween toy, with Lincoln's toys
    Code: 5813
 
    Clue 6 (Clue6.mp3):
-   "In the upper chamber of washing, search the lowest drawer. You will find a case bearing
-   the mark of the great spider warrior. Your clue lies within."
+   "Among your brother's treasures crawls a creature of eight legs and
+    bare bones, who wakes each year when pumpkins glow. Look within its
+    bony chest, seeker, for that is where your secret hides."
 
 
-7. In a bird box
+7. In the big drum (djembe) with the musical instruments
    Code: 3175
 
    Clue 7 (Clue7.mp3):
-   "A small wooden house, built for winged visitors of feather and song. Look inside — for a
-   different kind of visitor has left something there for you."
+   "Among the instruments that sing throughout your home stands one that
+    speaks not with strings or reeds, but with the beat of open hands upon
+    its skin. Look deep inside its round wooden belly for what you seek."
 
 
-8. Under the table on the verandah
+8. Behind the Lord of the Rings books, upstairs bookcase
    Code: 6284
 
    Clue 8 (Clue8.mp3):
-   "Step beyond the walls to the covered realm outside. Beneath the table upon the verandah,
-   your secret rests in the shadows."
+   "On the upstairs shelf lives a tale of a small hero who carried a great
+    and terrible ring on a long and dangerous road. Move the story of that
+    journey aside, seeker, and find what has been hidden behind it."
 
 
-9. Under Socrates (made of socks)
+9. Up high in the towel cupboard (look straight up when inside)
    Code: 7182
 
    Clue 9 (Clue9.mp3):
-   "Seek the curious creature born not of flesh and bone, but of the humble sock. He bears the
-   name of a great thinker from the ancient world. Look beneath him, and you shall find your prize."
+   "Return once more to the cupboard of soft folded things, where warmth
+    is kept for after the bath. This time, do not look ahead — lift your
+    eyes to the heavens above, seeker, and there your secret waits."
 
 
-10. On a trumpet
+10. In Dad's shoe
     Code: 4861
 
     Clue 10 (Clue10.mp3):
-    "The brass voice of music calls out across the realm! Find the mighty instrument that rings
-    with a single breath — and upon it, your final clue awaits."
+    "Even a crystal ball must borrow help from mortal things. Somewhere
+     nearby rests a single shoe belonging to one who walks always by your
+     side. Search inside it, seeker, and your very last secret shall be
+     revealed."
 
 
 ==================================================
-Ending Sequence Scripts
+Ending Sequence Scripts — READY TO RECORD
 ==================================================
 
 are-you-sure1.mp3  [plays automatically after the 10th door is solved]
-    "Lincoln... you have done it. All ten doors stand open. You have proven yourself a true
-     quest-seeker. But before I reveal your prize... I must ask. Are you... TRULY... ready?"
+    "Lily... you have done it. All ten doors stand open. You have proven yourself a
+     true quest-seeker. But before I reveal your prize... I must ask. Are you...
+     TRULY... ready?"
     [Yes / No buttons appear on screen — record silence or a dramatic pause here]
 
 
 are-you-sure2.mp3  [plays when either Yes or No is pressed — must work for both]
-    "...Of course you are! I was going to tell you either way. Now listen carefully, young
-     seeker, for the crystal ball speaks only once..."
+    "...Of course you are! I was going to tell you either way. Now listen carefully,
+     young seeker, for the crystal ball speaks only once..."
     [Continue button appears on screen]
 
 
 location.mp3  [plays when Continue is pressed — the gift reveal]
-    "Your birthday prize awaits you in your parents' bedroom. But be warned — this treasure
-     is guarded! You will need to call upon the aid of Mum and Dad to help you claim what is
-     rightfully yours. Go now, Lincoln. Your quest is complete. Happy Birthday."
+    "Your birthday prize awaits you [GIFT LOCATION]. Go now, Lily. Your quest is
+     complete. Happy 12th Birthday."
+    (Fill in [GIFT LOCATION] — e.g. "in your parents' bedroom" or wherever it
+     actually is, and add a warning line here too if you need Mum/Dad's help to
+     retrieve it, same as Lincoln's version did.)
 
 
-location-repeat.mp3  [plays if Lincoln taps the crystal ball again after the ending]
-    "Your prize is in your parents' bedroom, young seeker. Call upon Mum and Dad —
-     they will help you claim it."
+location-repeat.mp3  [plays if Lily taps the crystal ball again after the ending]
+    "Your prize is [GIFT LOCATION], young seeker. Go and claim it."
 
 
 ==================================================
-Reaction Audio Scripts
+Intro Script — READY TO RECORD
 ==================================================
 
 Intro (intro.mp3):
-    "Greetings, young quest-seeker! Today, on your special birthday, a grand challenge awaits!
-     Touch this Crystal Ball to hear the first riddle, which will guide you through the ten
-     magical doors standing between you and your birthday prize! Are you ready?"
+    "Greetings, young quest-seeker! Today, on your special birthday, a grand
+     challenge awaits! Touch this Crystal Ball to hear the first riddle, which
+     will guide you through the ten magical doors standing between you and your
+     birthday prize! Are you ready?
 
+     One more thing before you begin: this year your secrets are hidden inside
+     balloons. Some are fully blown up, some are barely inflated, and a few
+     might just have the code written right on them. Keep your eyes open for
+     anything round and colourful, wherever the riddles lead you."
+
+
+==================================================
+Reaction Audio — REUSE FROM LINCOLN'S VERSION, NO RE-RECORDING NEEDED
+==================================================
+These never mention a name, so you can copy the .mp3 files straight across from
+Lincoln's audio folder into this project's audio folder and be done with them.
 
 Coughs (cough1.mp3 – cough4.mp3)
-    [Plays when Lincoln taps the orb while audio is already playing — interrupts the clue]
-    [No script — just record 4 different theatrical wizard coughs/throat clears]
-    Suggested variations:
-        cough1: one short sharp cough
-        cough2: two coughs in a row
-        cough3: a long drawn-out "ahem"
-        cough4: a cough followed by a grumble
-
+    [Plays when Lily taps the orb while audio is already playing — interrupts the clue]
+    cough1: one short sharp cough
+    cough2: two coughs in a row
+    cough3: a long drawn-out "ahem"
+    cough4: a cough followed by a grumble
 
 Nopes (nope1.mp3 – nope7.mp3)
     [Plays when a wrong code is entered — keep each one short]
@@ -141,19 +173,21 @@ Nopes (nope1.mp3 – nope7.mp3)
     nope6: "Incorrect! You can do it — keep trying."
     nope7: "Not yet... I believe in you. Try again."
 
+Also reusable as pure sound effects (no voice): click.mp3, unlock.mp3
+
 
 ==================================================
-All Files to Record
+All Files To Record (the short list)
 ==================================================
-
     intro.mp3
-    Clue1.mp3 through Clue10.mp3
+    Clue1.mp3 through Clue10.mp3   (scripts above, ready to record)
     are-you-sure1.mp3
     are-you-sure2.mp3
-    location.mp3
-    location-repeat.mp3
-    cough1.mp3, cough2.mp3, cough3.mp3, cough4.mp3
-    nope1.mp3, nope2.mp3, nope3.mp3, nope4.mp3, nope5.mp3, nope6.mp3, nope7.mp3
+    location.mp3            — fill in [GIFT LOCATION] first
+    location-repeat.mp3     — fill in [GIFT LOCATION] first
 
-    (unlock.mp3 and click.mp3 are sound effects — reuse from Lily's version or replace
-    with new ones if you prefer a different sound)
+    (Everything else — click, unlock, cough1-4, nope1-7 — copy over from
+    Lincoln's audio folder as-is.)
+
+    Door 2's balloon: tie to a rock with string, drop in the middle of the
+    pool — no waterproofing needed.

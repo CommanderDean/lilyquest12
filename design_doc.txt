@@ -1,62 +1,78 @@
-Web App: Lincoln's Birthday Quest
-Updated for Lincoln's 9th Birthday (2026)
+Web App: Lily's 12th Birthday Quest
+Built from Lincoln's 9th Birthday Quest app (itself originally built from Lily's 11th
+Birthday Quest in 2025). Full circle!
 ==========================================
-Originally created for Lily's 11th Birthday (2025). This document reflects the current
-state of the game as built — the original design doc was written before development and
-the game has evolved beyond it during build.
 
 1. PROJECT OVERVIEW
 The game is a single-page web application (index.html) with a wizard/magic theme.
-Lincoln interacts with a crystal ball that plays audio clues guiding him to find physical
+Lily interacts with a crystal ball that plays audio clues guiding her to find physical
 4-digit codes hidden around the house. Each code unlocks a puzzle by matching symbols
 to the correct sequence. There are 10 puzzles in total. The game ends with a multi-phase
-ending sequence that reveals the location of Lincoln's birthday present.
+ending sequence that reveals the location of Lily's birthday present.
 
 2. TARGET USER
-Primary User: Lincoln (Dean's son, born 2017, approx. 9 years old)
-Considerations: Puzzles and interactions should be intuitive and engaging for this age.
+Primary User: Lily (Dean's daughter, turning 12)
+Considerations: She loves music, craft/art and books/stories — a few small nods to
+these are woven into the note text and the finale sparkle effect, but the core wizard
+theme, doors and puzzle mechanic are unchanged from Lincoln's version.
 
 3. CORE GAMEPLAY LOOP
-(A) Password screen: password is "ninetoday2026"
+(A) Password screen: password is "twelvetoday2026" (placeholder — change if you like,
+    search index.html for "const correct")
 (B) Birthday modal dismisses, then crystal ball auto-plays intro.mp3
 (C) For each of the 10 puzzles:
     - Crystal ball plays a location clue (audio)
-    - Lincoln finds the hidden 4-digit code in the house
-    - On the puzzle screen, Lincoln drags symbols into 4 slots matching the code
+    - Lily finds the hidden 4-digit code in the house
+    - On the puzzle screen, Lily drags (or taps) symbols into 4 slots matching the code
     - Correct code: door unlocks with animation + sound, next clue plays automatically
     - Wrong code: shake animation + random nope sound
 (D) After all 10 doors: ending sequence plays (are-you-sure1.mp3, are-you-sure2.mp3,
-    location.mp3) revealing the gift location
-(E) Lincoln can tap the crystal ball any time to replay the current clue
+    location.mp3) revealing the gift location, with a gold sparkle flourish
+(E) Lily can tap the crystal ball any time to replay the current clue
 
-4. CODES (digits 1-8, matching symbol palette positions)
+4. CODES (digits 1-8, matching symbol palette positions — unchanged from Lincoln's set,
+   they're arbitrary and don't need to match hiding-spot content)
     Door 1:  2468      Door 6:  5813
     Door 2:  7351      Door 7:  3175
     Door 3:  4812      Door 8:  6284
     Door 4:  6237      Door 9:  7182
     Door 5:  1584      Door 10: 4861
 
-5. AUDIO FILES
-    NEEDS RECORDING:
-        intro.mp3           — Opening crystal ball speech
-        Clue1.mp3–Clue10.mp3 — 10 location clues (one per hiding spot)
-        are-you-sure1.mp3   — First ending audio
-        are-you-sure2.mp3   — Second ending audio
-        location.mp3        — Gift location reveal
-        location-repeat.mp3 — Repeat of gift location (tapping orb after ending)
+5. AUDIO FILES — WHAT ACTUALLY NEEDS RE-RECORDING
+    Good news: only about 15 of the 24 audio files need fresh recording. The coughs and
+    "nope" reactions never mention a name, so they're fully reusable as-is.
 
-    REUSABLE FROM LILY'S VERSION:
-        click.mp3, unlock.mp3, interrupt.mp3
-        cough1.mp3–cough4.mp3
-        nope1.mp3–nope7.mp3
+    NEEDS RECORDING (new voice takes, personalised for Lily — see locations.txt for
+    full scripts and drafts):
+        intro.mp3              — Opening crystal ball speech
+        Clue1.mp3 – Clue10.mp3 — 10 location clues (one per hiding spot, once you've
+                                  picked them)
+        are-you-sure1.mp3      — First ending audio (drafted, ready to record)
+        are-you-sure2.mp3      — Second ending audio (drafted, ready to record)
+        location.mp3           — Gift location reveal (drafted with a placeholder —
+                                  drop in the actual hiding spot)
+        location-repeat.mp3    — Repeat of gift location (drafted with a placeholder)
+
+    REUSABLE AS-IS (copy the files straight over from Lincoln's audio folder — no
+    re-recording needed, nothing name-specific in them):
+        click.mp3, unlock.mp3
+        cough1.mp3 – cough4.mp3
+        nope1.mp3 – nope7.mp3
+        (interrupt.mp3 too, if you end up using it — currently unused in the code)
 
 6. VISUAL DESIGN
-    Theme: Wizard / Magic (dark blues, purples, gold accents)
+    Theme: Wizard / Magic (dark blues, purples, gold accents) — kept as-is
     Fonts: MedievalSharp (headings), IM Fell English SC (body)
     Crystal ball: images/orb.png, orb2.png, orb3.png
     Orb glow pulses in sync with audio volume via Web Audio API
-    Symbols: 16 SVG shapes, 8 per puzzle (deterministic based on puzzle seed)
+    Symbols: 16 SVG shapes, 8 per puzzle (deterministic based on puzzle seed —
+    symbols.html and codes_in_symbols.html are still accurate, just cosmetically
+    retitled for Lily)
     Doors: SVG shapes injected inline, unique per puzzle
+    NEW: finale sparkle effect — small gold star/music-note/pencil flourishes burst
+    around the orb when the gift location is revealed (search "spawnFinaleSparkles"
+    in index.html). A light personal touch for her music/craft/story interests without
+    a full reskin.
 
 7. SCENES
     - Password screen (z-index: 1001, covers everything)
@@ -65,31 +81,56 @@ Considerations: Puzzles and interactions should be intuitive and engaging for th
     - Final note scene (parchment note, crystal ball nav icon)
     - Door unlocked message scene (click-through transition screen)
 
-8. IMPROVEMENTS MADE IN LINCOLN'S VERSION (vs Lily's original)
-    - Fixed orb glow animation (scale * 0 bug — orb now actually pulses with audio)
-    - Added localStorage progress saving (SAVE_KEY = 'lincolnQuest9_2026')
-      Progress is restored on password re-entry. To reset: clear that localStorage key.
-    - Added progress indicator (top-centre, e.g. "3 of 10 doors unlocked")
-    - Added position number labels (1–8) on each symbol tile so the code mechanic
-      is clearer for a 9-year-old
-    - Improved door unlock animation (gold flash + wider rotation arc)
-    - Improved puzzle instructions text (larger, more descriptive)
-    - Added audio preloading (next clue loads silently in background)
-    - Added Enter key support on password screen
-    - Cleaned up undeclared variable (lastPlayedAudio)
-    - Welcome-back modal shows door count if resuming mid-game
+8. WHAT'S CHANGED FROM LINCOLN'S VERSION
+    - All "Lincoln" text swapped to "Lily" (title, modals, note, welcome-back message)
+    - Password changed to "twelvetoday2026" (was "ninetoday2026")
+    - localStorage save key changed to "lilyQuest12_2026" (was "lincolnQuest9_2026")
+      so the two games never collide in the same browser
+    - Note scene text personalised with a nod to her music/craft/story interests
+    - Added a gold sparkle finale flourish on the gift reveal (new — see section 6)
+    - Everything else (mechanics, doors, symbols, drag/tap, save/resume, restart
+      confirmation, progress indicator, audio preloading) is unchanged and already
+      tested down to 375px width
 
 9. TECHNICAL SPECS
     Core: HTML5, CSS3, JavaScript (ES6+) — single file, no dependencies, no backend
     Audio: HTML5 Audio + Web Audio API (for glow sync)
     Responsive: Yes — mobile-first, tested down to 375px width
-    State: localStorage (key: lincolnQuest9_2026)
+    State: localStorage (key: lilyQuest12_2026)
 
 10. WHAT DEAN STILL NEEDS TO DO
-    - Choose 10 hiding locations in the new house (see locations.txt)
-    - Write clue scripts for each location
-    - Record all audio files listed in section 5 above
+    - Choose 10 hiding locations (see locations.txt for a brainstorm list tied to
+      her interests, plus a fill-in template)
+    - Write/adapt the 10 clue scripts once locations are picked (locations.txt has
+      the format + wizard-voice examples to riff off)
+    - Record the ~15 audio files listed in section 5 (copy over the reusable ones
+      from Lincoln's audio folder rather than re-recording them)
+    - Decide the actual gift location and drop it into location.mp3 / location-repeat.mp3
+      scripts before recording (see locations.txt, marked [GIFT LOCATION])
     - Add the gift location text to the note scene in index.html
-      (search for "note-gift-location" in index.html)
-    - Hide the printed codes at the locations on the day
-    - Optionally: update the final note parchment text for Lincoln
+      (search for "note-gift-location")
+    - Hide the printed codes at the locations on the day (codes.txt / codes_in_symbols.html)
+    - Decide on a deployment plan — this folder's git remote still points at the
+      Lincoln repo (lilyquest11) — see section 11 before pushing anything
+
+11. DEPLOYMENT — IMPORTANT
+    This folder is a checkout of the SAME repo that hosts Lincoln's LIVE game:
+        https://github.com/CommanderDean/lilyquest11
+        https://commanderdean.github.io/lilyquest11/
+    Pushing from here as-is would overwrite Lincoln's deployed game with Lily's.
+    Recommended: create a new empty GitHub repo (e.g. "lilyquest12") under the
+    CommanderDean account, then point this folder's git remote at it before pushing:
+        git remote set-url origin git@github-commander:CommanderDean/lilyquest12.git
+    Then enable GitHub Pages (Settings → Pages → Deploy from branch → main → /root).
+
+12. DEV / TESTING NOTES
+    Password:          twelvetoday2026
+    localStorage key:  lilyQuest12_2026
+        Clear in browser DevTools → Application → Local Storage to reset progress.
+
+    Auto-solve button (hidden dev tool — currently commented out):
+        To re-enable for testing, search index.html for "DEV: AUTO-SOLVE" and
+        uncomment both the HTML button element and the JS event listener block.
+        Search for "DEV: Hidden auto-solve button" to find the HTML block,
+        and "dev-solve-btn" to find the JS block.
+        Remember to comment them out again before the actual birthday.

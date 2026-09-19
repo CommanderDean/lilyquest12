@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lincoln's Birthday Quest</title>
+    <title>Lily's 12th Birthday Quest</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
@@ -850,6 +850,26 @@
             border-color: #e57373;
             box-shadow: 0 0 20px #e57373;
         }
+
+        /* Finale Sparkles — little gold flourishes when the gift is revealed */
+        .finale-sparkle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 1.4rem;
+            color: var(--accent-gold);
+            text-shadow: 0 0 10px var(--accent-gold);
+            pointer-events: none;
+            opacity: 0;
+            animation: sparkleFloat 2.2s ease-out forwards;
+            z-index: 5;
+        }
+
+        @keyframes sparkleFloat {
+            0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.4); }
+            15%  { opacity: 1; }
+            100% { opacity: 0; transform: translate(calc(-50% + var(--dx, 0px)), calc(-50% + var(--dy, -160px))) scale(1.1) rotate(var(--rot, 15deg)); }
+        }
     </style>
 </head>
 <body>
@@ -886,7 +906,7 @@
     <div class="game-container">
         <!-- SCENE 1: THE CRYSTAL BALL -->
         <div id="crystal-ball-scene" class="scene active">
-            <h1>Birthday Quest</h1>
+            <h1>Lily's Quest</h1>
             <div class="crystal-ball-container" id="crystal-ball-activator">
                 <div class="crystal-ball-glow"></div>
                 <img id="crystal-ball-image" src="images/orb.png" alt="Crystal Ball">
@@ -956,7 +976,7 @@
         <div id="note-scene" class="scene">
             <div class="note-paper">
                 <h2>A Secret Note for the Seeker!</h2>
-                <p>Congratulations, Lincoln! You have proven your wisdom and solved all the mysteries of the Birthday Quest. To receive your gift...</p>
+                <p>Congratulations, Lily! The crystal ball has watched you fill pages with stories, learn new tunes, and create beautiful things all year long — and now you have proven your wisdom by solving all ten mysteries of the Birthday Quest. To receive your gift...</p>
                 <!-- Dean: fill in the gift location below -->
                 <p id="note-gift-location"></p>
             </div>
@@ -1057,9 +1077,9 @@
 
         // =====================================================================
         // GAME STATE  (persisted via localStorage)
-        // To reset the game, clear localStorage key 'lincolnQuest9_2026'.
+        // To reset the game, clear localStorage key 'lilyQuest12_2026'.
         // =====================================================================
-        const SAVE_KEY = 'lincolnQuest9_2026';
+        const SAVE_KEY = 'lilyQuest12_2026';
 
         let currentPuzzleIndex      = 0;
         let userInputCode           = [null, null, null, null];
@@ -1301,6 +1321,28 @@
                     { transform: 'translateX(10px)'   },
                     { transform: 'translateX(0px)'    }
                 ], { duration: 500, iterations: 1 });
+            }
+        }
+
+        // =====================================================================
+        // FINALE SPARKLES — gold flourishes (music note / pencil / star) when
+        // the gift location is revealed. A small wink to Lily's music, craft
+        // and story-loving side without changing the overall wizard theme.
+        // =====================================================================
+        function spawnFinaleSparkles() {
+            const icons = ['✦', '♪', '✎', '❈', '★', '♫'];
+            for (let i = 0; i < 14; i++) {
+                const el = document.createElement('span');
+                el.className = 'finale-sparkle';
+                el.textContent = icons[Math.floor(Math.random() * icons.length)];
+                const angle = (Math.PI * 2 * i) / 14 + Math.random() * 0.4;
+                const dist  = 90 + Math.random() * 90;
+                el.style.setProperty('--dx', `${Math.cos(angle) * dist}px`);
+                el.style.setProperty('--dy', `${Math.sin(angle) * dist - 60}px`);
+                el.style.setProperty('--rot', `${(Math.random() * 60 - 30)}deg`);
+                el.style.animationDelay = `${Math.random() * 0.3}s`;
+                crystalBallActivator.appendChild(el);
+                setTimeout(() => el.remove(), 2800);
             }
         }
 
@@ -1558,7 +1600,7 @@
             updateProgress();
             loadPuzzle(0);
             showScene('crystalBall');
-            showModal('Game restarted. Ready when you are, Lincoln!', false);
+            showModal('Game restarted. Ready when you are, Lily!', false);
         }
 
         restartBtn.addEventListener('click', () => showConfirmModal(1));
@@ -1616,7 +1658,7 @@
 
             passwordSubmit.addEventListener('click', () => {
                 const entered = passwordInput.value.trim().toLowerCase();
-                const correct = 'ninetoday2026';
+                const correct = 'twelvetoday2026';
 
                 if (entered === correct) {
                     passwordError.textContent = '';
@@ -1641,9 +1683,9 @@
                     }
 
                     if (hasSave && currentPuzzleIndex > 0) {
-                        showModal(`Welcome back, Lincoln! You have unlocked ${currentPuzzleIndex} of 10 doors.`, false);
+                        showModal(`Welcome back, Lily! You have unlocked ${currentPuzzleIndex} of 10 doors.`, false);
                     } else {
-                        showModal('Happy Birthday Lincoln! This is your Birthday Quest.', false);
+                        showModal('Happy 12th Birthday, Lily! This is your Birthday Quest.', false);
                     }
 
                 } else {
@@ -1726,6 +1768,7 @@
                 playAudio(locationAudioFile, () => {
                     endingPhase = 'final';
                     saveState();
+                    spawnFinaleSparkles();
                 });
             });
 

@@ -1,4 +1,4 @@
-Secret Codes for Lincoln's Quest (9th Birthday, 2026):
+Secret Codes for Lily's Quest (12th Birthday, 2026):
 
     Door 1:  2468
     Door 2:  7351
@@ -12,3 +12,4 @@ Secret Codes for Lincoln's Quest (9th Birthday, 2026):
     Door 10: 4861
 
 Print each code on a small slip of paper and hide it at the matching location.
+See locations.txt for hiding-spot ideas and a template to plan them out.
