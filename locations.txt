@@ -17,92 +17,62 @@ Your 10 Hiding Spots
    Code: 2468
 
    Clue 1 (Clue1.mp3):
-   "Upstairs stands a silver guardian who shows you your own face each day,
-    yet she has never once spoken her own name. Step behind her, young
-    seeker, and see what she has been hiding from you."
+   "The first clue! There's a girl who stands silent in the hallway. Whenever you look at her, she returns your gaze. What is she hiding behind her back. Tucked away. She will not say."
 
-
-2. At the bottom of the pool in the backyard
-   Code: 7351
+2. Up high in the towel cupboard (look straight up when inside)
+   Code: 7182
 
    Clue 2 (Clue2.mp3):
-   "In the backyard lies a realm of blue, still and deep, where you cannot
-    breathe but the fish would feel at home. Take a breath, brave seeker,
-    and dive down to where the sunlight fades — your next secret rests
-    upon the floor of the deep."
-
+   "Hidden in a nook in the corner of the hall. Open the door but don't look at the floor. Not behind a mirror nor folded on the shelf. Chin up and believe in yourself."
 
 3. In the hanging basket on the front porch (empty, hangs from the ceiling)
    Code: 4812
 
    Clue 3 (Clue3.mp3):
-   "At the front of the house hangs a vessel meant for flowers and leaves,
-    yet no green thing grows within it now. Reach up into its emptiness,
-    seeker, and you shall find what waits."
-
+   "Near the entrance to home, where no green things grow.
+   Reach up high, see what you can find."
 
 4. In the pocket of her pink puffer jacket, in her room
    Code: 6237
 
    Clue 4 (Clue4.mp3):
-   "Somewhere in your own chamber rests a coat as pink as dawn, puffed up
-    like a cloud caught mid-fall. Search its pocket, young seeker, and
-    your next secret shall be found."
-
+   "Pause and ponder, then peer with purpose. Your precious prize is packed in a pretty, pink, puffer, pocket."
 
 5. In the esky with the Australian flag design, downstairs outside
    Code: 1584
 
    Clue 5 (Clue5.mp3):
-   "Outside, below, a box stands guard — one that keeps cold things cold,
-    marked with the stars of our southern sky. Open its lid, seeker, and
-    claim what lies within."
-
+   "Marked by the southern cross and the union jack. It keeps cool the things you pack."
 
 6. In the spider skeleton's rib cage — Halloween toy, with Lincoln's toys
    Code: 5813
 
    Clue 6 (Clue6.mp3):
-   "Among your brother's treasures crawls a creature of eight legs and
-    bare bones, who wakes each year when pumpkins glow. Look within its
-    bony chest, seeker, for that is where your secret hides."
-
+   "A haunting creature guards this code. More legs a cat. No skin, just bone."
 
 7. In the big drum (djembe) with the musical instruments
    Code: 3175
 
    Clue 7 (Clue7.mp3):
-   "Among the instruments that sing throughout your home stands one that
-    speaks not with strings or reeds, but with the beat of open hands upon
-    its skin. Look deep inside its round wooden belly for what you seek."
-
+   "Play soft or loud. Play the beat for the crowd."
 
 8. Behind the Lord of the Rings books, upstairs bookcase
    Code: 6284
 
    Clue 8 (Clue8.mp3):
-   "On the upstairs shelf lives a tale of a small hero who carried a great
-    and terrible ring on a long and dangerous road. Move the story of that
-    journey aside, seeker, and find what has been hidden behind it."
+   "Don't tell the elf! "My precious" is hidden on a shelf. One does not simply find the clue at last. Maybe look for a book or else - You shall not pass!"
 
-
-9. Up high in the towel cupboard (look straight up when inside)
-   Code: 7182
+9. At the bottom of the pool in the backyard
+   Code: 7351
 
    Clue 9 (Clue9.mp3):
-   "Return once more to the cupboard of soft folded things, where warmth
-    is kept for after the bath. This time, do not look ahead — lift your
-    eyes to the heavens above, seeker, and there your secret waits."
-
+   "In the backyard lies a realm where you cannot breathe. Take a breath, brave seeker, and dive down to the depths, where your next secret rests."
 
 10. In Dad's shoe
     Code: 4861
 
     Clue 10 (Clue10.mp3):
-    "Even a crystal ball must borrow help from mortal things. Somewhere
-     nearby rests a single shoe belonging to one who walks always by your
-     side. Search inside it, seeker, and your very last secret shall be
-     revealed."
+    "Umm... ew... sorry about this. The next clue, unfortunately, is in a shoe. I know it's not right but it's on his right foot. Does it make it less bad that the shoe is currently on the foot of your dad."
 
 
 ==================================================
@@ -118,20 +88,15 @@ are-you-sure1.mp3  [plays automatically after the 10th door is solved]
 
 are-you-sure2.mp3  [plays when either Yes or No is pressed — must work for both]
     "...Of course you are! I was going to tell you either way. Now listen carefully,
-     young seeker, for the crystal ball speaks only once..."
+     young seeker, here is the password phrase you must say!"
     [Continue button appears on screen]
 
 
 location.mp3  [plays when Continue is pressed — the gift reveal]
-    "Your birthday prize awaits you [GIFT LOCATION]. Go now, Lily. Your quest is
-     complete. Happy 12th Birthday."
-    (Fill in [GIFT LOCATION] — e.g. "in your parents' bedroom" or wherever it
-     actually is, and add a warning line here too if you need Mum/Dad's help to
-     retrieve it, same as Lincoln's version did.)
-
+    "I wish to wish the wish I wish to wish, but if I wish the wish the witch wishes, I won’t wish the wish which I wished to wish which is this wish."
 
 location-repeat.mp3  [plays if Lily taps the crystal ball again after the ending]
-    "Your prize is [GIFT LOCATION], young seeker. Go and claim it."
+    "I wish to wish the wish I wish to wish, but if I wish the wish the witch wishes, I won’t wish the wish which I wished to wish which is this wish."
 
 
 ==================================================

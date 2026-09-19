@@ -881,9 +881,8 @@
         <svg viewBox="0 0 24 24"><path d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
     </button>
 
-    <!-- DEV: Hidden auto-solve button — uncomment to re-enable for testing
+    <!-- DEV: Hidden auto-solve button - enabled for testing -->
     <button id="dev-solve-btn" title=""></button>
-    -->
 
     <!-- Two-step restart confirmation modal -->
     <div id="confirm-modal" class="modal">
@@ -920,7 +919,7 @@
             </div>
 
             <div id="ending-continue-button" style="display: none; position: absolute; top: 70%; left: 50%; transform: translateX(-50%);">
-                <button id="ending-continue-btn" class="puzzle-btn">What about my prize?</button>
+                <button id="ending-continue-btn" class="puzzle-btn">Learn the password phrase</button>
             </div>
 
             <div id="puzzle-nav-hint" class="nav-hint">
@@ -1016,52 +1015,52 @@
         // =====================================================================
         const puzzleData = [
             {
-                puzzleId: 1, audioClueFile: 'audio/Clue1.mp3', correctCode: '2468',
+                puzzleId: 1, audioClueFile: 'audio/clue1.mp3', correctCode: '2468',
                 lockedItemSVG: `<svg viewBox="0 0 100 140"><rect x="5" y="5" width="90" height="130" fill="#6B4F3A" stroke="#4a3728" stroke-width="10"/><circle cx="80" cy="70" r="5" fill="#f7d716"/></svg>`,
                 symbolPalette: generateSymbols(0)
             },
             {
-                puzzleId: 2, audioClueFile: 'audio/Clue2.mp3', correctCode: '7351',
+                puzzleId: 2, audioClueFile: 'audio/clue2.mp3', correctCode: '7351',
                 lockedItemSVG: `<svg viewBox="0 0 100 140"><rect x="5" y="5" width="90" height="130" fill="#715e4e" stroke="#4a3728" stroke-width="10"/><rect x="45" y="60" width="10" height="20" fill="#333"/><circle cx="80" cy="70" r="5" fill="#ccc"/></svg>`,
                 symbolPalette: generateSymbols(1)
             },
             {
-                puzzleId: 3, audioClueFile: 'audio/Clue3.mp3', correctCode: '4812',
+                puzzleId: 3, audioClueFile: 'audio/clue3.mp3', correctCode: '4812',
                 lockedItemSVG: `<svg viewBox="0 0 100 140"><rect x="5" y="5" width="90" height="130" fill="#6B4F3A" stroke="#4a3728" stroke-width="10"/><path d="M 20 20 L 80 120 M 80 20 L 20 120" stroke="#f7d716" stroke-width="4"/><circle cx="80" cy="70" r="5" fill="#f7d716"/></svg>`,
                 symbolPalette: generateSymbols(2)
             },
             {
-                puzzleId: 4, audioClueFile: 'audio/Clue4.mp3', correctCode: '6237',
+                puzzleId: 4, audioClueFile: 'audio/clue4.mp3', correctCode: '6237',
                 lockedItemSVG: `<svg viewBox="0 0 100 140"><rect x="5" y="5" width="90" height="130" fill="#715e4e" stroke="#4a3728" stroke-width="10"/><rect x="20" y="20" width="60" height="100" stroke="#333" stroke-width="3" fill="none"/><circle cx="80" cy="70" r="5" fill="#ccc"/></svg>`,
                 symbolPalette: generateSymbols(3)
             },
             {
-                puzzleId: 5, audioClueFile: 'audio/Clue5.mp3', correctCode: '1584',
+                puzzleId: 5, audioClueFile: 'audio/clue5.mp3', correctCode: '1584',
                 lockedItemSVG: `<svg viewBox="0 0 100 140"><rect x="5" y="5" width="90" height="130" fill="#6B4F3A" stroke="#4a3728" stroke-width="10"/><circle cx="50" cy="70" r="20" stroke="#f7d716" stroke-width="4" fill="none"/><circle cx="80" cy="70" r="5" fill="#f7d716"/></svg>`,
                 symbolPalette: generateSymbols(4)
             },
             {
-                puzzleId: 6, audioClueFile: 'audio/Clue6.mp3', correctCode: '5813',
+                puzzleId: 6, audioClueFile: 'audio/clue6.mp3', correctCode: '5813',
                 lockedItemSVG: `<svg viewBox="0 0 100 140"><rect x="5" y="5" width="90" height="130" fill="#715e4e" stroke="#4a3728" stroke-width="10"/><path d="M 50 20 L 20 120 L 80 120 Z" stroke="#333" stroke-width="3" fill="#444"/><circle cx="80" cy="70" r="5" fill="#ccc"/></svg>`,
                 symbolPalette: generateSymbols(5)
             },
             {
-                puzzleId: 7, audioClueFile: 'audio/Clue7.mp3', correctCode: '3175',
+                puzzleId: 7, audioClueFile: 'audio/clue7.mp3', correctCode: '3175',
                 lockedItemSVG: `<svg viewBox="0 0 100 140"><rect x="5" y="5" width="90" height="130" fill="#6B4F3A" stroke="#4a3728" stroke-width="10"/><line x1="20" y1="70" x2="80" y2="70" stroke="#f7d716" stroke-width="4"/><circle cx="80" cy="70" r="5" fill="#f7d716"/></svg>`,
                 symbolPalette: generateSymbols(6)
             },
             {
-                puzzleId: 8, audioClueFile: 'audio/Clue8.mp3', correctCode: '6284',
+                puzzleId: 8, audioClueFile: 'audio/clue8.mp3', correctCode: '6284',
                 lockedItemSVG: `<svg viewBox="0 0 100 140"><rect x="5" y="5" width="90" height="130" fill="#715e4e" stroke="#4a3728" stroke-width="10"/><rect x="40" y="60" width="20" height="20" fill="#333"/><circle cx="80" cy="70" r="5" fill="#ccc"/></svg>`,
                 symbolPalette: generateSymbols(7)
             },
             {
-                puzzleId: 9, audioClueFile: 'audio/Clue9.mp3', correctCode: '7182',
+                puzzleId: 9, audioClueFile: 'audio/clue9.mp3', correctCode: '7182',
                 lockedItemSVG: `<svg viewBox="0 0 100 140"><rect x="5" y="5" width="90" height="130" fill="#6B4F3A" stroke="#4a3728" stroke-width="10"/><path d="M20,120 C40,80 60,80 80,120" stroke="#f7d716" stroke-width="4" fill="none"/><circle cx="80" cy="70" r="5" fill="#f7d716"/></svg>`,
                 symbolPalette: generateSymbols(8)
             },
             {
-                puzzleId: 10, audioClueFile: 'audio/Clue10.mp3', correctCode: '4861',
+                puzzleId: 10, audioClueFile: 'audio/clue10.mp3', correctCode: '4861',
                 lockedItemSVG: `<svg viewBox="0 0 100 140"><rect x="5" y="5" width="90" height="130" fill="#715e4e" stroke="#4a3728" stroke-width="10"/><circle cx="50" cy="30" r="10" fill="#333"/><circle cx="50" cy="110" r="10" fill="#333"/><circle cx="80" cy="70" r="5" fill="#ccc"/></svg>`,
                 symbolPalette: generateSymbols(9)
             }
@@ -1622,7 +1621,6 @@
         // DEV: AUTO-SOLVE  (hidden button — bottom-left corner)
         // Uncomment the HTML button and this block to re-enable for testing.
         // =====================================================================
-        /*
         document.getElementById('dev-solve-btn').addEventListener('click', () => {
             if (gameCompleted) return;
             showScene('puzzle');
@@ -1643,7 +1641,6 @@
             });
             setTimeout(() => checkCode(), 300);
         });
-        */
 
         // =====================================================================
         // INIT
