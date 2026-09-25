@@ -60,6 +60,14 @@ theme, doors and puzzle mechanic are unchanged from Lincoln's version.
         nope1.mp3 – nope7.mp3
         (interrupt.mp3 too, if you end up using it — currently unused in the code)
 
+    NEW — SUPPLIED BY DEAN (not a wizard-voice recording):
+        Lyrics_Birthday_Quest.mp3 — the 34s pop "Happy Birthday" song (already
+                             in the audio/ folder). Plays in the new intro song
+                             scene (see section 7) and can also be played/stopped
+                             any time via the note-icon button, top-right of the
+                             screen, throughout the whole game including after
+                             the quest ends.
+
 6. VISUAL DESIGN
     Theme: Wizard / Magic (dark blues, purples, gold accents) — kept as-is
     Fonts: MedievalSharp (headings), IM Fell English SC (body)
@@ -76,10 +84,19 @@ theme, doors and puzzle mechanic are unchanged from Lincoln's version.
 
 7. SCENES
     - Password screen (z-index: 1001, covers everything)
+    - Intro song scene (NEW — black background, "Birthday Quest" in shining gold
+      text, gentle sparkles, plays birthday-song.mp3, has a Skip button; shown
+      once per login, right after the password and before the crystal ball)
     - Crystal ball scene (orb, title, nav hint, door nav icon)
     - Puzzle scene (door, 4 code slots, 8-symbol palette, clear/unlock buttons)
     - Final note scene (parchment note, crystal ball nav icon)
     - Door unlocked message scene (click-through transition screen)
+
+    Also new: a song toggle button (top-right, next to the restart button)
+    that plays/stops birthday-song.mp3 from anywhere in the game — crystal
+    ball, puzzles, note scene, even after the quest is finished. It's a
+    separate audio channel from the wizard's clues, so it never interrupts
+    or gets interrupted by them.
 
 8. WHAT'S CHANGED FROM LINCOLN'S VERSION
     - All "Lincoln" text swapped to "Lily" (title, modals, note, welcome-back message)
@@ -99,19 +116,15 @@ theme, doors and puzzle mechanic are unchanged from Lincoln's version.
     State: localStorage (key: lilyQuest12_2026)
 
 10. WHAT DEAN STILL NEEDS TO DO
-    - Choose 10 hiding locations (see locations.txt for a brainstorm list tied to
-      her interests, plus a fill-in template)
-    - Write/adapt the 10 clue scripts once locations are picked (locations.txt has
-      the format + wizard-voice examples to riff off)
-    - Record the ~15 audio files listed in section 5 (copy over the reusable ones
-      from Lincoln's audio folder rather than re-recording them)
+    - Drop birthday-song.mp3 into the audio/ folder (see section 5)
     - Decide the actual gift location and drop it into location.mp3 / location-repeat.mp3
       scripts before recording (see locations.txt, marked [GIFT LOCATION])
     - Add the gift location text to the note scene in index.html
       (search for "note-gift-location")
     - Hide the printed codes at the locations on the day (codes.txt / codes_in_symbols.html)
-    - Decide on a deployment plan — this folder's git remote still points at the
-      Lincoln repo (lilyquest11) — see section 11 before pushing anything
+
+    Done: hiding locations picked, clue scripts written, audio recorded, deployed
+    to the new lilyquest12 repo.
 
 11. DEPLOYMENT — IMPORTANT
     This folder is a checkout of the SAME repo that hosts Lincoln's LIVE game:

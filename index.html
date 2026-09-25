@@ -98,6 +98,98 @@
             fill: var(--accent-gold);
         }
 
+        /* Song Toggle Button — play/stop the birthday song, anywhere in the game */
+        #song-toggle-btn {
+            position: fixed;
+            top: 12px;
+            right: 15px;
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.07);
+            border-radius: 50%;
+            border: 1.5px solid rgba(247, 215, 22, 0.35);
+            cursor: pointer;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 200;
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+
+        #song-toggle-btn:hover {
+            background: rgba(255, 255, 255, 0.18);
+            border-color: var(--accent-gold);
+            transform: scale(1.1);
+        }
+
+        #song-toggle-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: rgba(247, 215, 22, 0.5);
+            transition: fill 0.3s;
+            pointer-events: none;
+        }
+
+        #song-toggle-btn:hover svg,
+        #song-toggle-btn.playing svg {
+            fill: var(--accent-gold);
+        }
+
+        #song-toggle-btn.playing {
+            border-color: var(--accent-gold);
+            animation: songPulse 1.4s ease-in-out infinite;
+        }
+
+        @keyframes songPulse {
+            0%, 100% { box-shadow: 0 0 6px 0px rgba(247, 215, 22, 0.4); }
+            50%      { box-shadow: 0 0 16px 6px rgba(247, 215, 22, 0.55); }
+        }
+
+        /* Intro Song Scene — plays after login, before the crystal ball */
+        #intro-song-scene {
+            background: #000;
+        }
+
+        .intro-song-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .intro-song-title {
+            font-family: 'MedievalSharp', cursive;
+            font-size: clamp(2.5rem, 9vw, 6rem);
+            margin: 0;
+            text-align: center;
+            background: linear-gradient(100deg, #b8860b 0%, #f7d716 20%, #fff6c9 35%, #f7d716 50%, #b8860b 70%, #f7d716 90%);
+            background-size: 250% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: var(--accent-gold);
+            text-shadow: 0 0 50px rgba(247, 215, 22, 0.55);
+            animation: introShine 3s linear infinite, introPulse 2.4s ease-in-out infinite;
+        }
+
+        @keyframes introShine {
+            to { background-position: -250% center; }
+        }
+
+        @keyframes introPulse {
+            0%, 100% { transform: scale(1); }
+            50%      { transform: scale(1.04); }
+        }
+
+        #intro-song-skip-btn {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
         /* Confirm Modal */
         .confirm-content {
             display: flex;
@@ -881,6 +973,11 @@
         <svg viewBox="0 0 24 24"><path d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
     </button>
 
+    <!-- Song toggle button — plays/stops the birthday song, top-right, shown after password accepted -->
+    <button id="song-toggle-btn" title="Play birthday song">
+        <svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>
+    </button>
+
     <!-- DEV: Hidden auto-solve button - enabled for testing -->
     <button id="dev-solve-btn" title=""></button>
 
@@ -900,6 +997,14 @@
         <input type="password" id="password-input" placeholder="Password">
         <button id="password-submit">Enter</button>
         <p id="password-error" style="color: red;"></p>
+    </div>
+
+    <!-- INTRO SONG SCENE — plays after login, before the crystal ball appears -->
+    <div id="intro-song-scene" class="scene">
+        <div class="intro-song-content">
+            <h1 class="intro-song-title">Birthday Quest</h1>
+        </div>
+        <button id="intro-song-skip-btn" class="puzzle-btn">Skip &#9654;</button>
     </div>
 
     <div class="game-container">
@@ -1073,6 +1178,7 @@
         const areYouSure2AudioFile    = 'audio/are-you-sure2.mp3';
         const locationAudioFile       = 'audio/location.mp3';
         const locationRepeatAudioFile = 'audio/location-repeat.mp3';
+        const birthdaySongFile        = 'audio/Lyrics_Birthday_Quest.mp3';
 
         // =====================================================================
         // GAME STATE  (persisted via localStorage)
@@ -1087,6 +1193,8 @@
         let introFinished           = false;
         let lastPlayedAudio         = null;
         let endingPhase             = null; // null | 'phase1'..'phase5' | 'final'
+        let pendingHasSave          = false; // hasSave flag carried through the intro song scene
+        let introFinishedHandled    = false; // guards against double-firing the intro-song transition
 
         function saveState() {
             try {
@@ -1121,6 +1229,7 @@
         const bufferLength  = analyser.frequencyBinCount;
         const dataArray     = new Uint8Array(bufferLength);
         const mainAudio     = new Audio();
+        const birthdaySongAudio = new Audio(birthdaySongFile);
         let audioSourceNode;
         const glowElement   = document.querySelector('.crystal-ball-glow'); // kept for reference, hidden
         const orbImage      = document.getElementById('crystal-ball-image');
@@ -1191,9 +1300,14 @@
         const passwordSubmit     = document.getElementById('password-submit');
         const passwordError      = document.getElementById('password-error');
         const progressIndicator  = document.getElementById('progress-indicator');
+        const songToggleBtn      = document.getElementById('song-toggle-btn');
+        const introSongScene     = document.getElementById('intro-song-scene');
+        const introSongSkipBtn   = document.getElementById('intro-song-skip-btn');
+        const introSongContent   = document.querySelector('.intro-song-content');
 
         const scenes = {
             passwordScreen:      passwordScreen,
+            introSong:           introSongScene,
             crystalBall:         document.getElementById('crystal-ball-scene'),
             puzzle:              document.getElementById('puzzle-scene'),
             note:                document.getElementById('note-scene'),
@@ -1328,20 +1442,40 @@
         // the gift location is revealed. A small wink to Lily's music, craft
         // and story-loving side without changing the overall wizard theme.
         // =====================================================================
-        function spawnFinaleSparkles() {
+        function spawnSparkles(container, count) {
             const icons = ['✦', '♪', '✎', '❈', '★', '♫'];
-            for (let i = 0; i < 14; i++) {
+            for (let i = 0; i < count; i++) {
                 const el = document.createElement('span');
                 el.className = 'finale-sparkle';
                 el.textContent = icons[Math.floor(Math.random() * icons.length)];
-                const angle = (Math.PI * 2 * i) / 14 + Math.random() * 0.4;
+                const angle = (Math.PI * 2 * i) / count + Math.random() * 0.4;
                 const dist  = 90 + Math.random() * 90;
                 el.style.setProperty('--dx', `${Math.cos(angle) * dist}px`);
                 el.style.setProperty('--dy', `${Math.sin(angle) * dist - 60}px`);
                 el.style.setProperty('--rot', `${(Math.random() * 60 - 30)}deg`);
                 el.style.animationDelay = `${Math.random() * 0.3}s`;
-                crystalBallActivator.appendChild(el);
+                container.appendChild(el);
                 setTimeout(() => el.remove(), 2800);
+            }
+        }
+
+        function spawnFinaleSparkles() {
+            spawnSparkles(crystalBallActivator, 14);
+        }
+
+        // Gentle recurring sparkles around the "Birthday Quest" title while
+        // the intro song plays
+        let introSparkleInterval = null;
+        function startIntroSparkles() {
+            stopIntroSparkles();
+            introSparkleInterval = setInterval(() => {
+                spawnSparkles(introSongContent, 2);
+            }, 500);
+        }
+        function stopIntroSparkles() {
+            if (introSparkleInterval) {
+                clearInterval(introSparkleInterval);
+                introSparkleInterval = null;
             }
         }
 
@@ -1661,34 +1795,93 @@
                     passwordError.textContent = '';
 
                     const hasSave = loadState(); // Restore progress if any
+                    pendingHasSave = hasSave;
+                    introFinishedHandled = false;
 
-                    showScene('crystalBall');
-                    progressIndicator.style.display = 'block';
-                    restartBtn.style.display = 'flex';
-                    updateProgress();
-                    loadPuzzle(currentPuzzleIndex);
-
-                    // Restore any mid-ending UI state
-                    if (gameCompleted) {
-                        navToPuzzleBtn.style.display = 'none';
-                        document.getElementById('puzzle-nav-hint').style.display = 'none';
-                        if (endingPhase === 'phase2') {
-                            document.getElementById('ending-yes-no-buttons').style.display = 'flex';
-                        } else if (endingPhase === 'phase4') {
-                            document.getElementById('ending-continue-button').style.display = 'block';
-                        }
-                    }
-
-                    if (hasSave && currentPuzzleIndex > 0) {
-                        showModal(`Welcome back, Lily! You have unlocked ${currentPuzzleIndex} of 10 doors.`, false);
-                    } else {
-                        showModal('Happy 12th Birthday, Lily! This is your Birthday Quest.', false);
-                    }
+                    showScene('introSong');
+                    startIntroSparkles();
+                    birthdaySongAudio.currentTime = 0;
+                    birthdaySongAudio.play().catch(() => {});
+                    songToggleBtn.classList.add('playing');
+                    songToggleBtn.title = 'Stop birthday song';
 
                 } else {
                     passwordError.textContent = 'Incorrect password. Try again.';
                     passwordInput.value = '';
                 }
+            });
+
+            // =====================================================================
+            // INTRO SONG SCENE — plays after login, before the crystal ball.
+            // enterGame() holds what used to run immediately after the
+            // password was accepted; it now runs once the song ends or is
+            // skipped.
+            // =====================================================================
+            function enterGame(hasSave) {
+                showScene('crystalBall');
+                progressIndicator.style.display = 'block';
+                restartBtn.style.display = 'flex';
+                songToggleBtn.style.display = 'flex';
+                updateProgress();
+                loadPuzzle(currentPuzzleIndex);
+
+                // Restore any mid-ending UI state
+                if (gameCompleted) {
+                    navToPuzzleBtn.style.display = 'none';
+                    document.getElementById('puzzle-nav-hint').style.display = 'none';
+                    if (endingPhase === 'phase2') {
+                        document.getElementById('ending-yes-no-buttons').style.display = 'flex';
+                    } else if (endingPhase === 'phase4') {
+                        document.getElementById('ending-continue-button').style.display = 'block';
+                    }
+                }
+
+                if (hasSave && currentPuzzleIndex > 0) {
+                    showModal(`Welcome back, Lily! You have unlocked ${currentPuzzleIndex} of 10 doors.`, false);
+                } else {
+                    showModal('Happy 12th Birthday, Lily! This is your Birthday Quest.', false);
+                }
+            }
+
+            function finishIntroSong() {
+                if (introFinishedHandled) return;
+                introFinishedHandled = true;
+                birthdaySongAudio.pause();
+                birthdaySongAudio.currentTime = 0;
+                songToggleBtn.classList.remove('playing');
+                songToggleBtn.title = 'Play birthday song';
+                stopIntroSparkles();
+                enterGame(pendingHasSave);
+            }
+
+            introSongSkipBtn.addEventListener('click', finishIntroSong);
+
+            // Song toggle button — play/stop the birthday song at any point
+            // in the game, including after the quest is finished
+            songToggleBtn.addEventListener('click', () => {
+                if (birthdaySongAudio.paused) {
+                    birthdaySongAudio.currentTime = 0;
+                    birthdaySongAudio.play().catch(() => {});
+                    songToggleBtn.classList.add('playing');
+                    songToggleBtn.title = 'Stop birthday song';
+                } else {
+                    birthdaySongAudio.pause();
+                    birthdaySongAudio.currentTime = 0;
+                    songToggleBtn.classList.remove('playing');
+                    songToggleBtn.title = 'Play birthday song';
+                }
+            });
+
+            birthdaySongAudio.addEventListener('ended', () => {
+                songToggleBtn.classList.remove('playing');
+                songToggleBtn.title = 'Play birthday song';
+                if (introSongScene.classList.contains('active')) finishIntroSong();
+            });
+
+            // Fallback: if the song file is missing or fails to load, don't
+            // strand the intro scene — move on automatically
+            birthdaySongAudio.addEventListener('error', () => {
+                if (introSongScene.classList.contains('active')) finishIntroSong();
             });
 
             // Navigation
